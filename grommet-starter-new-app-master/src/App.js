@@ -37,7 +37,7 @@ const theme = deepMerge(grommet, {
 
 const AppBar = (props) => (
   <Header
-    background="brand"
+    background="dark-2"
     pad={{ left: "medium", right: "small", vertical: "small" }}
     elevation="small"
     {...props}
@@ -72,9 +72,11 @@ const App = () => {
             }}
           />
         </AppBar>
-        <PageContent>
-          <PageHeader title="Welcome to Grommet!" />
-          <SelectComponent/>
+        <PageContent >
+          <Box align={'start'} margin={{top: "large"}}>
+            <SelectComponent/>
+          </Box>
+
         </PageContent>
       </Page>
     </Grommet>

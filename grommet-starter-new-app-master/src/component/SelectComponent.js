@@ -18,7 +18,12 @@ function SelectComponent() {
         if (aliment.type === 'g') {
             calcul = (aliment.calories * (value.name / 100));
         } else {
-            calcul = aliment.calories;
+            if (value.name > 15) {
+                calcul = 0;
+            } else {
+                calcul = aliment.calories * value.name;
+            }
+
         }
         setTotal(prevState => prevState + calcul);
     };
@@ -44,7 +49,7 @@ function SelectComponent() {
             </Box>
             <Box margin={{left: 'xlarge'}}>
 
-                <Text>
+                <Text weight={"bold"}>
                     Total calorii: {total}
                 </Text>
             </Box>
