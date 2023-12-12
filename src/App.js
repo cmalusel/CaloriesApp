@@ -47,7 +47,7 @@ const AppBar = (props) => (
 
 
 const App = () => {
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(true);
 
   return (
     <Grommet theme={theme} full themeMode={dark ? "dark" : "light"}>

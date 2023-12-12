@@ -1,12 +1,12 @@
 export const alimente =
     [{
-        name: "Carne de pui",
+        name: "Carne de pui - 239kcal",
         type: "g",
         calories: 239
 
     },
         {
-            name: "Ou fiert - buc",
+            name: "Ou fiert - buc 75kcal",
             type: "buc",
             calories: 75
         },
