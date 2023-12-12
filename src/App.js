@@ -53,7 +53,7 @@ const App = () => {
     <Grommet theme={theme} full themeMode={dark ? "dark" : "light"}>
       <Page>
         <AppBar>
-          <Text size="large">My App</Text>
+          <Text size="large">Calories Counter</Text>
           <Button
             a11yTitle={dark ? "Switch to Light Mode" : "Switch to Dark Mode"}
             icon={dark ? <Moon /> : <Sun />}
