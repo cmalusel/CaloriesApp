@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/CaloriesApp/static/js/main.0e6addb5.js",
+    "main.js": "/CaloriesApp/static/js/main.01e9c6cd.js",
     "index.html": "/CaloriesApp/index.html",
-    "main.0e6addb5.js.map": "/CaloriesApp/static/js/main.0e6addb5.js.map"
+    "main.01e9c6cd.js.map": "/CaloriesApp/static/js/main.01e9c6cd.js.map"
   },
   "entrypoints": [
-    "static/js/main.0e6addb5.js"
+    "static/js/main.01e9c6cd.js"
   ]
 }
