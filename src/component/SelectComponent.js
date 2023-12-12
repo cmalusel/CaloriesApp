@@ -8,6 +8,7 @@ function SelectComponent() {
     const [aliment, setAliment] = useState();
     const [total, setTotal] = useState(0);
     const [type, setType] = useState('g');
+    const [options, setOptions] = useState(alimente);
     function addAliment (option)  {
         setAliment(option);
         setType(option.type)
@@ -26,11 +27,28 @@ function SelectComponent() {
 
         }
         setTotal(prevState => prevState + calcul);
+    }
+
+    function resetTotal() {
+      setTotal(0);
     };
     return(
         <Box align={"center"} direction={"row"} gap={"medium"}>
             <Box>
-               <Select options={alimente} placeholder={"Selecteaza aliment"} onChange={({ option }) => addAliment(option)}/>
+               <Select options={options} placeholder={"Selecteaza aliment"} onChange={({ option }) => addAliment(option)}
+                       onSearch={(text) => {
+                           // The line below escapes regular expression special characters:
+                           // [ \ ^ $ . | ? * + ( )
+                           const escapedText = text.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&');
+
+                           // Create the regular expression with modified value which
+                           // handles escaping special characters. Without escaping special
+                           // characters, errors will appear in the console
+                           const exp = new RegExp(escapedText, 'i');
+                           setOptions(alimente.filter((o) => exp.test(o)));
+                       }}
+
+               />
             </Box>
             <Box>
                 <Form
@@ -52,6 +70,10 @@ function SelectComponent() {
                 <Text weight={"bold"}>
                     Total calorii: {total}
                 </Text>
+            </Box>
+            <Box>
+                <Button danger label={'Delete total number'} onClick={resetTotal}/>
+
             </Box>
 
         </Box>

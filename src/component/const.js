@@ -9,6 +9,11 @@ export const alimente =
             name: "Ou fiert - buc",
             type: "buc",
             calories: 75
+        },
+        {
+          name: "Sushi Philadelphia"  ,
+            type: "buc",
+            calories: 170
         }
 
 
