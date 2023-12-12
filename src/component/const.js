@@ -41,6 +41,11 @@ export const alimente =
             name: "Ciorba legume",
             type: "g",
             calories: 20
+        },
+        {
+            name: "Ciocolata",
+            type: "g",
+            calories: 420
         }
 
 

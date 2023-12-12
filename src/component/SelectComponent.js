@@ -31,7 +31,11 @@ function SelectComponent() {
 
     function resetTotal() {
       setTotal(0);
-    };
+    }
+
+    function onSubmitTotal({name}) {
+        setTotal(parseInt(name));
+    }
     return(
         <Box direction={"column"} align={"center"}>
             <Box align={"center"} direction={"row"} gap={"medium"} alignContent={"center"}>
@@ -61,7 +65,7 @@ function SelectComponent() {
                             <TextInput id="text-input-id" name="name" />
                         </FormField>
                         <Box direction="row" gap="medium">
-                            <Button type="submit" primary label="Submit" />
+                            <Button type="submit" primary label="Add" />
                             {/*<Button type="reset" label="Reset" />*/}
                         </Box>
                     </Form>
@@ -78,6 +82,23 @@ function SelectComponent() {
             <Box margin={{top: 'xlarge'}}>
                 <Button danger label={'Delete total number'} onClick={resetTotal}/>
 
+            </Box>
+            <Box margin={{top: "large"}}>
+
+                <Text weight={"bold"}>Set total manually:</Text>
+                <Form
+                    value={0}
+
+                    onSubmit={({value}) => onSubmitTotal(value)}
+                >
+                    <FormField name="name" htmlFor="text-input-id" >
+                        <TextInput id="text-input-id" name="name" />
+                    </FormField>
+                    <Box direction="row" gap="medium">
+                        <Button type="submit" primary label="Modify total" />
+                        {/*<Button type="reset" label="Reset" />*/}
+                    </Box>
+                </Form>
             </Box>
         </Box>
 
