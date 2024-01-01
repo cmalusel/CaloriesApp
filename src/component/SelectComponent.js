@@ -8,13 +8,25 @@ function SelectComponent() {
     const [aliment, setAliment] = useState();
     const [total, setTotal] = useState(0);
     const [type, setType] = useState('g');
-    const [options, setOptions] = useState(alimente);
+    const [options, setOptions] = useState(alimente.sort((a, b) => {
+        const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+        const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+        if (nameA < nameB) {
+            return -1;
+        }
+        if (nameA > nameB) {
+            return 1;
+        }
+
+        // names must be equal
+        return 0;
+    }));
 
     useEffect(() => {
        if (isNaN(localStorage.getItem('total'))) {
            localStorage.setItem('total', 0);
        } else {
-           setTotal(localStorage.getItem('total'));
+           setTotal(parseInt(localStorage.getItem('total')));
        }
     }, []);
     function addAliment (option)  {
@@ -82,7 +94,7 @@ function SelectComponent() {
                             onSubmit={({value}) => onSubmit(value)}
                         >
                             <FormField name="name" htmlFor="text-input-id" label={type === 'g' ? 'Grame': 'Buc'}>
-                                <TextInput id="text-input-id" name="name" />
+                                <TextInput id="text-input-id" name="name" value={type === 'g' ? 100: 1}/>
                             </FormField>
                             <Box direction="row" gap="medium">
                                 <Button type="submit" primary label="Add" />
@@ -92,9 +104,10 @@ function SelectComponent() {
                     </Box>
                     <Box margin={{left: 'xlarge'}}>
 
-                        <Text weight={"bold"}>
-                            Total calorii: {total}
+                        <Text weight={"bold"} color={total > 1700 ? 'red' : 'white'}>
+                            Total calorii: {Number(total).toFixed(2)}
                         </Text>
+                        <Text weight={"bold"} margin={{top:'medium'}}> Ramase : {1700 - total}</Text>
                     </Box>
 
 
